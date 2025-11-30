@@ -6,7 +6,7 @@ square.setAttribute("style", "border: 2px solid #414447; background-color: white
 container.append(square);
 
 //create one row (since container is flex)
-for (let i = 0; i < 239; i++) {
+for (let i = 0; i < 255; i++) {
 	copy = square.cloneNode();
 	container.insertBefore(copy, square);
 }
