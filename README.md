@@ -1,2 +1,3 @@
 - Created a line of squares with for loop and fit them in the container with flex-wrap.
-
+- make border-box to be able to fit elements in a compact way with each other.
+- when using querySelectorAll make sure to apply functions like event listeners to each one of them with forEach or something like that.
