@@ -1,3 +1,7 @@
 - Created a line of squares with for loop and fit them in the container with flex-wrap.
 - make border-box to be able to fit elements in a compact way with each other.
 - when using querySelectorAll make sure to apply functions like event listeners to each one of them with forEach or something like that.
+- declare each variable right above the function it is going to be used in.
+- when using a variable for css values do not list them in setAttribute() and such. List each of the css property seperately.
+- values of the properties are strings so if want to put the variable there then use the template literals with the units.
+- can run a function on loop in a conditional statement until its requirement is met.

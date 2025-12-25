@@ -1,20 +1,52 @@
-const container = document.querySelector("#container");
+const container = document.querySelector("#grid");
 const square = document.createElement("div");
 square.classList.add("square");
-square.setAttribute("style", "border: 2px solid #414447; height: 30px; width: 30px;");
-container.append(square);
 
-//create one row (since container is flex)
+//default grid
+square.setAttribute("style", "border: 1px solid #414447; height: 50px; width: 50px;");
+container.append(square);
+//create grid boxes continuously in one line(since container is flex)
 for (let i = 0; i < 255; i++) {
 	copy = square.cloneNode();
 	container.insertBefore(copy, square);
 }
-
 //change colour over hover
-let box;
 const squareClass = document.querySelectorAll(".square");
-squareClass.forEach(box => box.addEventListener('mouseenter', e => box.setAttribute("style", "border: 2px solid #414447; height: 30px; width: 30px; background-color: black;")));
+squareClass.forEach(box => box.addEventListener('mouseenter', () => box.style.backgroundColor = 'black'));
+let userGrid;
 
-function change() {
-	box.setAttribute("style", "border: 2px solid #414447; height: 30px; width: 30px; background-color: black;");
+//when button clicked
+const btn = document.querySelector("button");
+btn.addEventListener('click', ask);
+
+//button clicked function
+function ask() {
+	userGrid = prompt("How many squares would you like per side (1-100)?");
+	if (userGrid <= 100 && userGrid >= 1) {
+		run();
+	}
+	else {
+		ask();
+	}
 }
+
+function run() {
+	const squareClass = document.querySelectorAll(".square");
+	squareClass.forEach(box => box.remove());
+	const square = document.createElement("div");
+	let totalSquares = (userGrid * userGrid) - 1;
+	let squareSize = 800 / userGrid;
+	square.style.border = '1px solid #414447';
+	square.style.height = `${squareSize}px`;
+	square.style.width = `${squareSize}px`;
+	square.classList.add("square");
+	container.append(square);
+	for (let i = 0; i < totalSquares; i++) {
+		copy = square.cloneNode();
+		container.insertBefore(copy, square);
+	}
+	//change colour over hover
+	const squareClasses = document.querySelectorAll(".square");
+	squareClasses.forEach(box => box.addEventListener('mouseenter', () => box.style.backgroundColor = 'black'));
+}
+

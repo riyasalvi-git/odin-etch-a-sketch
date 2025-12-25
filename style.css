@@ -1,17 +1,23 @@
 #container {
 	border: 1px solid black;
-	height: 480px;
-	width: 480px;
+	height: 800px;
+	width: 800px;
 	display: flex;
-	flex-wrap: wrap;
 }
 
 .square {
 	box-sizing: border-box;
 	display: flex;
-	flex: 0 0 auto;
 }
 
-.changeBg {
-	background-color: black;
+#grid {
+	height: 800px;
+	width: 800px;
+	display: flex;
+	flex-wrap: wrap;
+	flex: 1 0 auto;
+}
+
+button {
+	margin: 20px;
 }
