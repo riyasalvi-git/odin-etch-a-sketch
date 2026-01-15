@@ -5,3 +5,5 @@
 - when using a variable for css values do not list them in setAttribute() and such. List each of the css property seperately.
 - values of the properties are strings so if want to put the variable there then use the template literals with the units.
 - can run a function on loop in a conditional statement until its requirement is met.
+- one child follows the parent while the other follows the children probably because the dimensions of the parent take precedence to the dimensions of the children.
+- apply flex to all parents and give the children min dimensions if needed. Then let all the children just flex-grow in the direction we want.
