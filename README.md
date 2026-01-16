@@ -7,3 +7,4 @@
 - can run a function on loop in a conditional statement until its requirement is met.
 - one child follows the parent while the other follows the children probably because the dimensions of the parent take precedence to the dimensions of the children.
 - apply flex to all parents and give the children min dimensions if needed. Then let all the children just flex-grow in the direction we want.
+- always if else is not needed. code works by steps.
