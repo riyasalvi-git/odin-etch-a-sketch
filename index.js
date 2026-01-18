@@ -34,6 +34,10 @@ function run() {
 	}
 	//change colour over hover
 	const squareClasses = document.querySelectorAll(".square");
-	squareClasses.forEach(box => box.addEventListener('mouseenter', () => box.style.backgroundColor = 'black'));
+	squareClasses.forEach(box => box.addEventListener('mouseover', function () {
+		let red = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+		let green = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+		let blue = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+		box.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+	}));
 }
-
