@@ -9,3 +9,4 @@
 - apply flex to all parents and give the children min dimensions if needed. Then let all the children just flex-grow in the direction we want.
 - always if else is not needed. code works by steps.
 - object properties are more accessible in function expressions than seperately.
+- convert variables we get to numbers by using Number() to make the further calculations easier.
