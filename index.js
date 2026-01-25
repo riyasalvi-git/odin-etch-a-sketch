@@ -37,9 +37,24 @@ function run() {
 	//squareClasses.forEach(box => box.addEventListener('mouseover', box.style.backgroundColor = 'black'));
 
 	squareClasses.forEach(box => box.addEventListener('mouseover', function () {
-		let red = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
-		let green = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
-		let blue = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
-		box.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+		if (box.classList.contains('colour')) {
+			let opacity = Number(box.style.opacity);
+			if (opacity < 1.0) {
+				opacity += 0.1;
+				box.style.opacity = `${opacity}`;
+				console.log(box.style.opacity);
+			}
+			else {
+				return;
+			}
+		}
+		else {
+			let red = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+			let green = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+			let blue = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+			box.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+			box.style.opacity = '0.1';
+			box.classList.add('colour');
+		}
 	}));
 }
