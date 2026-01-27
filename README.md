@@ -10,3 +10,4 @@
 - always if else is not needed. code works by steps.
 - object properties are more accessible in function expressions than seperately.
 - convert variables we get to numbers by using Number() to make the further calculations easier.
+- always pass second argument in an eventListener as an arrow function at least.

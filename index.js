@@ -1,11 +1,13 @@
 const container = document.querySelector("#container");
-const btn = document.querySelector("button");
+const sizeBtn = document.querySelector("#size");
+const rgb = document.querySelector("#rgb");
+const darken = document.querySelector("#darken");
 
 //default grid
 let userGrid = 16;
 run();
 
-btn.addEventListener('click', ask);
+sizeBtn.addEventListener('click', ask);
 
 //button clicked function
 function ask() {
@@ -32,37 +34,43 @@ function run() {
 			row.append(square);
 		}
 	}
-	//change colour over hover
-	const squareClasses = document.querySelectorAll(".square");
-	//squareClasses.forEach(box => box.addEventListener('mouseover', box.style.backgroundColor = 'black'));
+}
 
+//change colour over hover default
+const squareClasses = document.querySelectorAll(".square");
+squareClasses.forEach(box => box.addEventListener('mouseover', () => box.style.backgroundColor = 'black'));
+
+//rgb button click
+rgb.addEventListener('click', function () {
+	squareClasses.forEach(box => box.style.backgroundColor = " ");
 	squareClasses.forEach(box => box.addEventListener('mouseover', function () {
 		let red = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
 		let green = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
 		let blue = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
 		box.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 	}));
-}
+});
 
-squareClasses.forEach(box => box.addEventListener('mouseover', function () {
-	if (box.classList.contains('colour')) {
-		let opacity = Number(box.style.opacity);
-		if (opacity < 1.0) {
-			opacity += 0.1;
-			box.style.opacity = `${opacity}`;
-			console.log(box.style.opacity);
+//darken button click
+darken.addEventListener('click', function () {
+	squareClasses.forEach(box => box.addEventListener('mouseover', function () {
+		if (box.classList.contains('colour')) {
+			let opacity = Number(box.style.opacity);
+			if (opacity < 1.0) {
+				opacity += 0.1;
+				box.style.opacity = `${opacity}`;
+			}
+			else {
+				return;
+			}
 		}
 		else {
-			return;
+			let red = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+			let green = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+			let blue = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+			box.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+			box.style.opacity = '0.1';
+			box.classList.add('colour');
 		}
-	}
-	else {
-		let red = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
-		let green = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
-		let blue = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
-		box.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-		box.style.opacity = '0.1';
-		box.classList.add('colour');
-	}
-}));
-}
+	}));
+});
