@@ -11,3 +11,5 @@
 - object properties are more accessible in function expressions than seperately.
 - convert variables we get to numbers by using Number() to make the further calculations easier.
 - always pass second argument in an eventListener as an arrow function at least.
+- backgroundColor if needed to be empty should be set to 'unset'.
+- function run inside if statement or a block of code, ends there and does not read the script ahead.
