@@ -10,13 +10,14 @@ run();
 draw();
 
 sizeBtn.addEventListener('click', ask);
+//reset button
 reset.addEventListener('click', () => {
 	userGrid = 16;
 	run();
 	draw();
 });
 
-//button clicked function
+//gridSize button clicked function
 function ask() {
 	userGrid = prompt("How many squares would you like per side (1-100)?");
 	if (userGrid <= 100 && userGrid >= 1) {
