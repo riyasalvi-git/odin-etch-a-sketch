@@ -1,8 +1,39 @@
-#container {
+body {
+	background-color: #E2C3BE;
+}
+
+h1 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 56px;
+	color: #86715D;
+}
+
+.all {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+button {
 	margin: 20px;
+	height: 70px;
+	width: 140px;
+	font-family: 'Times New Roman', Times, serif;
+	color: #EBEAE8;
+	font-size: 22px;
+	font-weight: 900;
+	background-color: #A88E85;
+	border-radius: 10px;
+	border-width: 0px;
+}
+
+#container {
+	margin-top: 20px;
 	border: 1px solid black;
-	height: 800px;
-	width: 800px;
+	height: 600px;
+	width: 600px;
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -13,7 +44,6 @@
 }
 
 .square {
-	border: 1px solid #414447;
 	box-sizing: border-box;
 	display: flex;
 	min-height: 8px;
@@ -21,9 +51,10 @@
 	flex-grow: 1;
 }
 
-
-button {
-	margin: 20px;
-	height: 50px;
-	width: 90px;
+footer {
+	text-align: center;
+	font-family: 'Times New Roman', Times, serif;
+	color: #86715D;
+	font-size: 22px;
+	font-weight: 900;
 }

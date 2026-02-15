@@ -2,12 +2,19 @@ const container = document.querySelector("#container");
 const sizeBtn = document.querySelector("#size");
 const rgb = document.querySelector("#rgb");
 const darken = document.querySelector("#darken");
+const reset = document.querySelector("#reset");
 
 //default grid
 let userGrid = 16;
 run();
+draw();
 
 sizeBtn.addEventListener('click', ask);
+reset.addEventListener('click', () => {
+	userGrid = 16;
+	run();
+	draw();
+});
 
 //button clicked function
 function ask() {
@@ -37,26 +44,42 @@ function run() {
 	}
 }
 
+//change colour over hover 
 function draw() {
-	//change colour over hover default
 	const squareClasses = document.querySelectorAll(".square");
-	squareClasses.forEach(box => box.addEventListener('mouseover', () => box.style.backgroundColor = 'black'));
+	let rgber;
+	let darkener;
 
-	//rgb button click
-	rgb.addEventListener('click', function () {
-		squareClasses.forEach(box => box.style.backgroundColor = "unset");
-		squareClasses.forEach(box => box.addEventListener('mouseover', function () {
-			let red = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
-			let green = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
-			let blue = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
-			box.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-		}));
+	rgb.addEventListener('click', () => {
+		squareClasses.forEach(box => {
+			box.style.backgroundColor = "unset";
+			box.style.opacity = "1.0";
+			box.classList.remove("colour", "coloured");
+		});
+		rgber = true;
+		darkener = false;
 	});
 
-	//darken button click
-	darken.addEventListener('click', function () {
-		squareClasses.forEach(box => box.style.backgroundColor = "unset");
-		squareClasses.forEach(box => box.addEventListener('mouseover', function () {
+	darken.addEventListener('click', () => {
+		squareClasses.forEach(box => {box.style.backgroundColor = "unset"; box.style.opacity = "1.0"});
+		darkener = true;
+		rgber = false;
+	});
+
+	squareClasses.forEach(box => box.addEventListener('mouseenter', function () {
+		if (rgber) {
+			if (box.classList.contains("coloured")) {
+				return;
+			}
+			else {
+				let red = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+				let green = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+				let blue = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+				box.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+				box.classList.add('coloured');
+			}
+		}
+		else if (darkener) {
 			if (box.classList.contains('colour')) {
 				let opacity = Number(box.style.opacity);
 				if (opacity < 1.0) {
@@ -75,6 +98,9 @@ function draw() {
 				box.style.opacity = '0.1';
 				box.classList.add('colour');
 			}
-		}));
-	});
+		}
+		else {
+			box.style.backgroundColor = '#AF967D'
+		}
+	}));
 }
